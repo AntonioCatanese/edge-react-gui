@@ -155,6 +155,9 @@ export default class Scan extends Component<Props> {
         Actions.addToken(parameters)
       } else { // assume pay URI
         this.props.updateParsedURI(parsedURI)
+        if (parsedURI.legacyAddress) {
+          return this.props.legacyAddressScanned(parsedURI)
+        }
         Actions.sendConfirmation('fromScan')
       }
     } catch (error) {
