@@ -13,7 +13,7 @@ import { toggleScanToWalletListModal } from '../../components/WalletListModal/ac
 import * as UI_SELECTORS from '../../selectors.js'
 import { updateLabel, updateParsedURI } from '../SendConfirmation/action.js'
 import { toggleWalletListModal } from '../WalletTransferList/action'
-import { disableScan, enableScan, toggleAddressModal, toggleEnableTorch } from './action'
+import { disableScan, enableScan, toggleAddressModal, toggleEnableTorch, qrCodeScanned } from './action'
 import Scan from './Scan.ui'
 import type { GuiWallet } from '../../../../types'
 
@@ -35,18 +35,12 @@ const mapStateToProps = (state: State) => {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  dispatchEnableScan: () => dispatch(enableScan()),
-  dispatchDisableScan: () => dispatch(disableScan()),
   toggleEnableTorch: () => dispatch(toggleEnableTorch()),
   toggleAddressModal: () => dispatch(toggleAddressModal()),
   toggleWalletListModal: () => dispatch(toggleWalletListModal()),
-  updateParsedURI: (parsedURI: EdgeParsedUri) => dispatch(updateParsedURI(parsedURI)),
   updateWalletTransfer: wallet => dispatch(updateLabel(wallet)),
   toggleScanToWalletListModal: () => dispatch(toggleScanToWalletListModal()),
-  loginWithEdge: (url: string) => {
-    Actions[Constants.EDGE_LOGIN]()
-    dispatch(loginWithEdge(url))
-  }
+  qrCodeScanned: (data: string) => dispatch(qrCodeScanned(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scan)
