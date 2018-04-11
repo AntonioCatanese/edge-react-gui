@@ -57,6 +57,9 @@ export type State = {
       displayAlert: boolean,
       edgeTransaction: EdgeTransaction
     },
+    legacyAddressModal: {
+      isVisible: boolean
+    },
     scenes: {
       scan: {
         torchEnabled: boolean,

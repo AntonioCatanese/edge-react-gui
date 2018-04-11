@@ -14,7 +14,8 @@ type Props = {
   currencyCode: string,
   currencyName: string,
   onConfirm: () => void,
-  onCancel: () => void
+  onCancel: () => void,
+  reset: () => void
 }
 export class LegacyAddressModalComponent extends Component<Props> {
   static defaultProps = {
@@ -34,7 +35,7 @@ export class LegacyAddressModalComponent extends Component<Props> {
     return (
       <InteractiveModal isVisible={isVisible} onBackdropPress={this.onCancel} onBackButtonPress={this.onCancel} onModalHide={this.onModalHide}>
         <InteractiveModal.Icon>
-          <Icon type={'ionIcons'} name={'ios-alert-outline'} size={30} />
+          <Icon style={{}} type={'ionIcons'} name={'ios-alert-outline'} size={30} />
         </InteractiveModal.Icon>
 
         <InteractiveModal.Title>
@@ -68,6 +69,10 @@ export class LegacyAddressModalComponent extends Component<Props> {
 
   onCancel = () => {
     this.props.onCancel()
+  }
+
+  onModalHide = () => {
+    this.props.reset()
   }
 }
 

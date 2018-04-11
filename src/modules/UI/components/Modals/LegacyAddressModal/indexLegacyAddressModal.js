@@ -23,6 +23,6 @@ export {
   dismissModal,
   reset,
   DISMISS_MODAL,
-  RESET,
-  LEGACY_ADDRESS_SCANNED
+  LEGACY_ADDRESS_SCANNED,
+  RESET
 }
