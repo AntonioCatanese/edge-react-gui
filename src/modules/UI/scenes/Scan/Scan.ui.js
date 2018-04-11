@@ -20,6 +20,7 @@ import Gradient from '../../components/Gradient/Gradient.ui'
 import SafeAreaView from '../../components/SafeAreaView'
 import { AUTHORIZED, DENIED, RESTRICTED } from '../../permissions'
 import AddressModal from './components/AddressModalConnector'
+import { LegacyAddressModal } from '../../components/Modals/LegacyAddressModal/indexLegacyAddressModal.js'
 import styles, { styles as styleRaw } from './style'
 
 type Props = {
@@ -85,6 +86,8 @@ export default class Scan extends Component<Props> {
           </View>
           {this.renderDropUp()}
         </View>
+
+        <LegacyAddressModal />
       </SafeAreaView>
     )
   }
@@ -109,7 +112,6 @@ export default class Scan extends Component<Props> {
   }
 
   onBarCodeRead = (scan: { data: string }) => {
-    console.error('ON BAR CODE READ')
     this.props.qrCodeScanned(scan.data)
   }
 

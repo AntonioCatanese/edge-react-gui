@@ -2,7 +2,7 @@
 
 import { InteractiveModal } from './InteractiveModal/InteractiveModal.ui'
 import { NonInteractiveModal } from './NonInteractiveModal/NonInteractiveModal.ui'
-import { PrivateKeyModal } from './PrivateKeyModal/PrivateKeyModalConnector.js'
+import { LegacyAddressModal } from './LegacyAddressModal/LegacyAddressModalConnector.js'
 import { PrimaryButton, SecondaryButton, TertiaryButton } from './components'
 
-export { InteractiveModal, NonInteractiveModal, PrivateKeyModal, PrimaryButton, SecondaryButton, TertiaryButton }
+export { InteractiveModal, NonInteractiveModal, LegacyAddressModal, PrimaryButton, SecondaryButton, TertiaryButton }

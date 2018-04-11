@@ -2,6 +2,7 @@
 
 import { Alert } from 'react-native'
 import {Actions} from 'react-native-router-flux'
+import type { EdgeParsedUri } from 'edge-core-js'
 
 import type { Dispatch, GetState } from '../../../ReduxTypes.js'
 import * as WALLET_API from '../../../Core/Wallets/api.js'
@@ -9,6 +10,8 @@ import * as UTILS from '../../../utils.js'
 import { loginWithEdge } from '../../../../actions/EdgeLoginActions.js'
 import { updateParsedURI } from '../../scenes/SendConfirmation/action.js'
 import s from '../../../../locales/strings.js'
+
+const PREFIX = 'SCAN/'
 
 export const UPDATE_RECIPIENT_ADDRESS = 'UPDATE_RECIPIENT_ADDRESS'
 
@@ -35,6 +38,12 @@ export const disableScan = () => {
     type: DISABLE_SCAN
   }
 }
+
+export const LEGACY_ADDRESS_SCANNED = PREFIX + 'LEGACY_ADDRESS_SCANNED'
+export const legacyAddressScanned = (parsedUri: EdgeParsedUri) => ({
+  type: LEGACY_ADDRESS_SCANNED,
+  data: { parsedUri }
+})
 
 export const qrCodeScanned = (data: string) => (dispatch: Dispatch, getState: GetState) => {
   const state = getState()
@@ -75,7 +84,7 @@ export const qrCodeScanned = (data: string) => (dispatch: Dispatch, getState: Ge
 
     // LEGACY ADDRESS ///////////////////////////////////////////////////////
     if (parsedURI.legacyAddress) {
-      return Alert.alert('LEGACY ADDRESS SCANNED')
+      return dispatch(legacyAddressScanned(parsedURI))
     }
 
     // PUBLIC ADDRESS ///////////////////////////////////////////////////////

@@ -248,7 +248,9 @@ const strings = {
   otp_notif_title: '2FA disable has been requested by another device',
   otp_notif_body: 'If you did not create this request, log in as %1$s and change your password',
 
-  word_to_in_convert_from_to_string: 'to'
+  word_to_in_convert_from_to_string: 'to',
+
+  legacy_address_warning: 'Warning: You have scanned a legacy format address that may not be for %1$s as it is indistinguishable from other currency addresses. Do you want to continue sending to this address?'
 }
 
 export default strings
