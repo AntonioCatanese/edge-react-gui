@@ -8,7 +8,7 @@ import { confirmLegacyAddress, dismissModal, reset } from './indexLegacyAddressM
 import LegacyAddressModalComponent from './LegacyAddressModal.ui.js'
 
 export const mapStateToProps = (state: State) => ({
-  ...state.ui.privateKeyModal
+  ...state.ui.legacyAddressModal
 })
 export const mapDispatchToProps = (dispatch: Dispatch) => ({
   onConfirm: () => {

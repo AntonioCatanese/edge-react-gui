@@ -13,7 +13,7 @@ export type ContainerProps = {
   children: Node,
   style?: StyleSheet.Styles
 }
-class Container extends Component<ContainerProps> {
+export class Container extends Component<ContainerProps> {
   render () {
     return (
       <View {...this.props} style={[styles.container, this.props.style]}>

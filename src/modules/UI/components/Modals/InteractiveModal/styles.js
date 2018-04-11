@@ -18,6 +18,7 @@ export const rawStyles = {
     shadowRadius: 4
   },
   header: {
+    alignItems: 'center',
     paddingHorizontal: 22
   },
   body: {
@@ -44,6 +45,9 @@ export const rawStyles = {
   },
   item: {
     padding: 6
+  },
+  row: {
+    flexDirection: 'row'
   },
   title: {
     fontSize: 22,

@@ -12,7 +12,7 @@ export type ContainerProps = {
   children: Node,
   style?: StyleSheet.Styles
 }
-class Container extends Component<ContainerProps> {
+export class Container extends Component<ContainerProps> {
   render () {
     return (
       <View {...this.props} style={[styles.container, this.props.style]}>
@@ -27,7 +27,7 @@ export type HeaderProps = {
   children: Node,
   style?: StyleSheet.Styles
 }
-class Header extends Component<HeaderProps> {
+export class Header extends Component<HeaderProps> {
   render () {
     return (
       <View {...this.props} style={[styles.header, this.props.style]}>
@@ -49,7 +49,7 @@ class Header extends Component<HeaderProps> {
 type AndroidHackSpacerProps = {
   style?: StyleSheet.Styles
 }
-class AndroidHackSpacer extends Component<AndroidHackSpacerProps> {
+export class AndroidHackSpacer extends Component<AndroidHackSpacerProps> {
   render () {
     return (
       <View style={styles.androidHackSpacer} />
@@ -62,7 +62,7 @@ export type IconProps = {
   children: Node,
   style?: StyleSheet.Styles
 }
-class Icon extends Component<IconProps> {
+export class Icon extends Component<IconProps> {
   static AndroidHackSpacer = AndroidHackSpacer
   render () {
     return (
@@ -93,7 +93,7 @@ export type DescriptionProps = {
   children: Node,
   style?: StyleSheet.Styles
 }
-class Description extends Component<DescriptionProps> {
+export class Description extends Component<DescriptionProps> {
   render () {
     return (
       <Text {...this.props} style={[styles.description, this.props.style]}>
@@ -148,6 +148,21 @@ export class Item extends Component<ItemProps> {
   }
 }
 
+// Row /////////////////////////////////////////////////////////////////////////////
+type RowProps = {
+  children: Node,
+  style?: StyleSheet.Styles
+}
+export class Row extends Component<RowProps> {
+  render () {
+    return (
+      <View style={[styles.row, this.props.style]} {...this.props}>
+        {this.props.children}
+      </View>
+    )
+  }
+}
+
 // INTERACTIVE_MODAL /////////////////////////////////////////////////////////////////////////////
 type Props = {
   isVisible: boolean,
@@ -161,6 +176,7 @@ export class InteractiveModal extends Component<Props> {
   static Body = Body
   static Footer = Footer
   static Item = Item
+  static Row = Row
 
   render () {
     const { isVisible } = this.props

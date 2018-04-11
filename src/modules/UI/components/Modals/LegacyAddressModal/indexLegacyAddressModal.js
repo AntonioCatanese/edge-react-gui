@@ -7,6 +7,7 @@ import {
   DISMISS_MODAL,
   RESET,
   legacyAddressScanned,
+  confirmLegacyAddress,
   dismissModal,
   reset
 } from './LegacyAddressModalActions.js'
@@ -18,6 +19,7 @@ export {
   LegacyAddressModalComponent,
   LegacyAddressModalReducer,
   legacyAddressScanned,
+  confirmLegacyAddress,
   dismissModal,
   reset,
   DISMISS_MODAL,

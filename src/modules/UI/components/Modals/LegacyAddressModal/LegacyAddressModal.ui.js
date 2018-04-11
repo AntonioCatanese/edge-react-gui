@@ -26,32 +26,35 @@ export class LegacyAddressModalComponent extends Component<Props> {
 
   render () {
     const { isVisible, currencyName } = this.props
-    const warning = sprintf(s.strings.legacy_address_warning, currencyName)
+    const WARNING = sprintf(s.strings.legacy_address_warning, currencyName)
+    const TITLE = s.strings.legacy_address_title
+    const CONFIRM = s.strings.legacy_address_confirm
+    const CANCEL = s.strings.legacy_address_cancel
 
     return (
       <InteractiveModal isVisible={isVisible} onBackdropPress={this.onCancel} onBackButtonPress={this.onCancel} onModalHide={this.onModalHide}>
         <InteractiveModal.Icon>
-          <Icon style={{}} type={'material'} name='alert-circle-outline' size={30} />
+          <Icon type={'ionIcons'} name={'ios-alert-outline'} size={30} />
         </InteractiveModal.Icon>
 
         <InteractiveModal.Title>
-          <Text>{'Legacy Address Detected'}</Text>
+          <Text>{TITLE}</Text>
         </InteractiveModal.Title>
 
         <InteractiveModal.Body>
-          <InteractiveModal.Description>{warning}</InteractiveModal.Description>
+          <InteractiveModal.Description>{WARNING}</InteractiveModal.Description>
         </InteractiveModal.Body>
 
         <InteractiveModal.Footer>
           <InteractiveModal.Item>
             <PrimaryButton onPress={this.onConfirm}>
-              <PrimaryButton.Text>{'Confirm'}</PrimaryButton.Text>
+              <PrimaryButton.Text>{CONFIRM}</PrimaryButton.Text>
             </PrimaryButton>
           </InteractiveModal.Item>
 
           <InteractiveModal.Item>
             <SecondaryButton onPress={this.onCancel}>
-              <SecondaryButton.Text>{'Cancel'}</SecondaryButton.Text>
+              <SecondaryButton.Text>{CANCEL}</SecondaryButton.Text>
             </SecondaryButton>
           </InteractiveModal.Item>
         </InteractiveModal.Footer>

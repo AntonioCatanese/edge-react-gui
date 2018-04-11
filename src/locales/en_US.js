@@ -250,7 +250,10 @@ const strings = {
 
   word_to_in_convert_from_to_string: 'to',
 
-  legacy_address_warning: 'Warning: You have scanned a legacy format address that may not be for %1$s as it is indistinguishable from other currency addresses. Do you want to continue sending to this address?'
+  legacy_address_title: 'Legacy Address Detected',
+  legacy_address_warning: 'Warning: You have scanned a legacy format address that may not be for %1$s as it is indistinguishable from other currency addresses.\n\nDo you want to continue sending to this address?',
+  legacy_address_confirm: 'Confirm',
+  legacy_address_cancel: 'Cancel'
 }
 
 export default strings
