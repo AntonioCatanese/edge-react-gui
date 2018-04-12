@@ -1,8 +1,7 @@
 // @flow
 
 import { Alert } from 'react-native'
-import {Actions} from 'react-native-router-flux'
-import type { EdgeParsedUri } from 'edge-core-js'
+import { Actions } from 'react-native-router-flux'
 
 import type { Dispatch, GetState } from '../../../ReduxTypes.js'
 import * as WALLET_API from '../../../Core/Wallets/api.js'
@@ -10,8 +9,7 @@ import * as UTILS from '../../../utils.js'
 import { loginWithEdge } from '../../../../actions/EdgeLoginActions.js'
 import { updateParsedURI } from '../../scenes/SendConfirmation/action.js'
 import s from '../../../../locales/strings.js'
-
-const PREFIX = 'SCAN/'
+import { legacyAddressScanned } from '../../components/Modals/LegacyAddressModal/indexLegacyAddressModal.js'
 
 export const UPDATE_RECIPIENT_ADDRESS = 'UPDATE_RECIPIENT_ADDRESS'
 
@@ -39,62 +37,57 @@ export const disableScan = () => {
   }
 }
 
-export const LEGACY_ADDRESS_SCANNED = PREFIX + 'LEGACY_ADDRESS_SCANNED'
-export const legacyAddressScanned = (parsedUri: EdgeParsedUri) => ({
-  type: LEGACY_ADDRESS_SCANNED,
-  data: { parsedUri }
-})
-
 export const qrCodeScanned = (data: string) => (dispatch: Dispatch, getState: GetState) => {
   const state = getState()
   if (!state.ui.scenes.scan.scanEnabled) return
 
   // EDGE LOGIN ///////////////////////////////////////////////////////////
-  if (/^airbitz:\/\/edge\//.test(data)) {
+  if (UTILS.isEdgeLogin(data)) {
     return dispatch(loginWithEdge(data))
   }
 
   const edgeWallet = state.core.wallets.byId[state.ui.wallets.selectedWalletId]
   try {
-    const parsedURI = WALLET_API.parseURI(edgeWallet, data)
-
-    // TOKEN ////////////////////////////////////////////////////////////////
-    if (parsedURI.token) { // token URI, not pay
-      const { contractAddress, currencyName, multiplier } = parsedURI.token
-      const currencyCode = parsedURI.token.currencyCode.toUpperCase()
-      const walletId = state.ui.wallets.selectedWalletId
-      const wallet = state.ui.wallets.byId[walletId]
-      let decimalPlaces = 18
-      if (parsedURI.token && parsedURI.token.multiplier) {
-        decimalPlaces = UTILS.denominationToDecimalPlaces(parsedURI.token.multiplier)
-      }
-      const parameters = {
-        contractAddress,
-        currencyCode,
-        currencyName,
-        multiplier,
-        decimalPlaces,
-        walletId,
-        wallet,
-        onAddToken: UTILS.noOp
-      }
-
-      return Actions.addToken(parameters)
-    }
-
-    // LEGACY ADDRESS ///////////////////////////////////////////////////////
-    if (parsedURI.legacyAddress) {
-      return dispatch(legacyAddressScanned(parsedURI))
-    }
-
-    // PUBLIC ADDRESS ///////////////////////////////////////////////////////
-    dispatch(updateParsedURI(parsedURI))
-    return Actions.sendConfirmation('fromScan')
+    var parsedURI = WALLET_API.parseURI(edgeWallet, data) // eslint-disable-line no-var
   } catch (error) {
     // INVALID QRCODE ///////////////////////////////////////////////////////
     dispatch(disableScan())
-    Alert.alert(s.strings.fragment_send_send_bitcoin_unscannable, error.toString(), [
+    return Alert.alert(s.strings.fragment_send_send_bitcoin_unscannable, error.toString(), [
       { text: s.strings.string_ok, onPress: () => dispatch(enableScan()) }
     ])
   }
+  // TOKEN ////////////////////////////////////////////////////////////////
+  if (parsedURI.token) {
+    // token URI, not pay
+    const { contractAddress, currencyName, multiplier } = parsedURI.token
+    const currencyCode = parsedURI.token.currencyCode.toUpperCase()
+    const walletId = state.ui.wallets.selectedWalletId
+    const wallet = state.ui.wallets.byId[walletId]
+    let decimalPlaces = 18
+    if (parsedURI.token && parsedURI.token.multiplier) {
+      decimalPlaces = UTILS.denominationToDecimalPlaces(parsedURI.token.multiplier)
+    }
+    const parameters = {
+      contractAddress,
+      currencyCode,
+      currencyName,
+      multiplier,
+      decimalPlaces,
+      walletId,
+      wallet,
+      onAddToken: UTILS.noOp
+    }
+
+    return Actions.addToken(parameters)
+  }
+
+  // LEGACY ADDRESS ///////////////////////////////////////////////////////
+  if (parsedURI.legacyAddress) {
+    const currencyName = state.ui.settings[state.ui.wallets.selectedCurrencyCode].currencyCode
+    return dispatch(legacyAddressScanned(parsedURI, currencyName))
+  }
+
+  // PUBLIC ADDRESS ///////////////////////////////////////////////////////
+  dispatch(updateParsedURI(parsedURI))
+  return Actions.sendConfirmation('fromScan')
 }

@@ -1,9 +1,9 @@
 // @flow
 
-import { LegacyAddressModal } from './LegacyAddressModalConnector.js'
 import { LegacyAddressModalComponent } from './LegacyAddressModal.ui.js'
 import { LegacyAddressModalReducer } from './LegacyAddressModalReducer.js'
 import {
+  LEGACY_ADDRESS_SCANNED,
   DISMISS_MODAL,
   RESET,
   legacyAddressScanned,
@@ -12,10 +12,7 @@ import {
   reset
 } from './LegacyAddressModalActions.js'
 
-import { LEGACY_ADDRESS_SCANNED } from '../../../scenes/Scan/action.js'
-
 export {
-  LegacyAddressModal,
   LegacyAddressModalComponent,
   LegacyAddressModalReducer,
   legacyAddressScanned,

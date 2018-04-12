@@ -11,7 +11,6 @@ import s from '../../../../../locales/strings.js'
 
 type Props = {
   isVisible: boolean,
-  currencyCode: string,
   currencyName: string,
   onConfirm: () => void,
   onCancel: () => void,

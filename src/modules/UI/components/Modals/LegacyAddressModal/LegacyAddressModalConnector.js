@@ -1,6 +1,7 @@
 // @flow
 
 import { connect } from 'react-redux'
+import type { EdgeParsedUri } from 'edge-core-js'
 
 import type { Dispatch, State } from '../../../../ReduxTypes.js'
 
@@ -11,8 +12,8 @@ export const mapStateToProps = (state: State) => ({
   ...state.ui.legacyAddressModal
 })
 export const mapDispatchToProps = (dispatch: Dispatch) => ({
-  onConfirm: () => {
-    dispatch(confirmLegacyAddress())
+  onConfirm: (parsedUri: EdgeParsedUri) => {
+    dispatch(confirmLegacyAddress(parsedUri))
   },
   onCancel: () => {
     dispatch(dismissModal())

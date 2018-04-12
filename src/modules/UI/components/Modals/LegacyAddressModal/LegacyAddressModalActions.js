@@ -1,5 +1,6 @@
 // @flow
 
+import type { EdgeParsedUri } from 'edge-core-js'
 import { Actions } from 'react-native-router-flux'
 
 import type { Dispatch, GetState } from '../../../../ReduxTypes.js'
@@ -7,8 +8,12 @@ import type { Dispatch, GetState } from '../../../../ReduxTypes.js'
 export const PREFIX = 'LEGACY_ADDRESS_MODAL/'
 
 export const LEGACY_ADDRESS_SCANNED = PREFIX + 'LEGACY_ADDRESS_SCANNED'
-export const legacyAddressScanned = () => ({
-  type: LEGACY_ADDRESS_SCANNED
+export const legacyAddressScanned = (parsedUri: EdgeParsedUri, currencyName: string) => ({
+  type: LEGACY_ADDRESS_SCANNED,
+  data: {
+    parsedUri,
+    currencyName
+  }
 })
 
 export const DISMISS_MODAL = PREFIX + 'DISMISS_MODAL'
@@ -21,8 +26,9 @@ export const reset = () => ({
   type: RESET
 })
 
-export const confirmLegacyAddress = () => (dispatch: Dispatch, getState: GetState) => {
+export const confirmLegacyAddress = (parsedUri: EdgeParsedUri) => (dispatch: Dispatch, getState: GetState) => {
+  dispatch(dismissModal())
   const state = getState()
-  const parsedUri = state.ui.scenes.scan.parsedUri
+  // const parsedUri = state.
   Actions.sendConfirmation({ parsedUri })
 }

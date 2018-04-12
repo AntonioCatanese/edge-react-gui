@@ -8,13 +8,21 @@ import { LEGACY_ADDRESS_SCANNED, DISMISS_MODAL, RESET } from './indexLegacyAddre
 
 const initialState = {
   isVisible: false,
-  parsedUri: null
+  parsedUri: null,
+  currencyName: null
 }
 
-type State = {
-  isVisible: boolean,
-  parsedUri: EdgeParsedUri | null
+type ActiveState = {
+  isVisible: true,
+  parsedUri: EdgeParsedUri,
+  currencyName: string
 }
+type InactiveState = {
+  isVisible: false,
+  parsedUri: null,
+  currencyName: null
+}
+type State = ActiveState | InactiveState
 export const LegacyAddressModalReducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case LEGACY_ADDRESS_SCANNED: {
@@ -22,7 +30,9 @@ export const LegacyAddressModalReducer = (state: State = initialState, action: A
         ...state,
         isVisible: true,
         // $FlowFixMe
-        parsedUri: action.data.parsedUri
+        parsedUri: action.data.parsedUri,
+        // $FlowFixMe
+        currencyName: action.data.currencyName
       }
     }
     case DISMISS_MODAL: {
