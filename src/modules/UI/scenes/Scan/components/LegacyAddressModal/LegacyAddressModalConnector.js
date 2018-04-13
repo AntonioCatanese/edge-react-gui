@@ -3,7 +3,7 @@
 import { connect } from 'react-redux'
 import type { EdgeParsedUri } from 'edge-core-js'
 
-import type { Dispatch, State } from '../../../../ReduxTypes.js'
+import type { Dispatch, State } from '../../../../../ReduxTypes.js'
 
 import { confirmLegacyAddress, dismissModal, reset } from './indexLegacyAddressModal.js'
 import LegacyAddressModalComponent from './LegacyAddressModal.ui.js'

@@ -20,7 +20,7 @@ import Gradient from '../../components/Gradient/Gradient.ui'
 import SafeAreaView from '../../components/SafeAreaView'
 import { AUTHORIZED, DENIED, RESTRICTED } from '../../permissions'
 import AddressModal from './components/AddressModalConnector'
-import { LegacyAddressModal } from '../../components/Modals/LegacyAddressModal/indexLegacyAddressModal.js'
+import { LegacyAddressModalConnector as LegacyAddressModal } from './components/LegacyAddressModal/indexLegacyAddressModal.js'
 import styles, { styles as styleRaw } from './style'
 
 type Props = {
@@ -87,7 +87,7 @@ export default class Scan extends Component<Props> {
           {this.renderDropUp()}
         </View>
 
-        <LegacyAddressModal onConfirm={} onCancel={} />
+        <LegacyAddressModal />
       </SafeAreaView>
     )
   }

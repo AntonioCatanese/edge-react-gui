@@ -10,12 +10,10 @@ import { request } from './Request/reducer.js'
 import { scenes } from './scenes/reducer.js'
 import { settings } from './Settings/reducer.js'
 import { wallets } from './Wallets/reducer.js'
-import { LegacyAddressModalReducer as legacyAddressModal } from './components/Modals/LegacyAddressModal/indexLegacyAddressModal.js'
 
 export { errorAlert, transactionAlert, scenes, wallets, request, settings }
 
 export const uiReducer = combineReducers({
-  legacyAddressModal,
   errorAlert,
   transactionAlert,
   scenes,

@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "async-lock": "^1.1.2",
+    "benchmark": "^2.1.4",
     "biggystring": "^3.0.1",
     "browserify-zlib": "^0.1.4",
     "buffer": "^5.0.8",
@@ -82,8 +83,9 @@
     "edge-currency-ethereum": "0.10.0",
     "edge-exchange-plugins": "^0.2.0",
     "edge-login-ui-rn": "^0.2.1",
-    "jsc-android": "216113.0.3",
+    "global": "^4.3.2",
     "https-browserify": "0.0.1",
+    "jsc-android": "216113.0.3",
     "lodash": "^4.17.2",
     "native-base": "^2.2.1",
     "os-browserify": "^0.1.2",

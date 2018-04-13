@@ -12,12 +12,14 @@ import {
 } from './reducers'
 
 export const scan = combineReducers({
-  torchEnabled,
-  addressModalVisible,
+  torch,
+  addressModal,
   recipientAddress,
   scanEnabled,
   selectedWalletListModalVisibility,
-  scanToWalletListModalVisibility
+  scanToWalletListModalVisibility,
+  uri,
+  legacyAddressModal
 })
 
 export default scan

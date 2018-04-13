@@ -41,14 +41,17 @@ export const qrCodeScanned = (data: string) => (dispatch: Dispatch, getState: Ge
   const state = getState()
   if (!state.ui.scenes.scan.scanEnabled) return
 
+  dispatch(qrCodeScanned(data))
+
   // EDGE LOGIN ///////////////////////////////////////////////////////////
   if (UTILS.isEdgeLogin(data)) {
     return dispatch(loginWithEdge(data))
   }
 
   const edgeWallet = state.core.wallets.byId[state.ui.wallets.selectedWalletId]
+  let parsedURI
   try {
-    var parsedURI = WALLET_API.parseURI(edgeWallet, data) // eslint-disable-line no-var
+    parsedURI = WALLET_API.parseURI(edgeWallet, data) // eslint-disable-line no-var
   } catch (error) {
     // INVALID QRCODE ///////////////////////////////////////////////////////
     dispatch(disableScan())
