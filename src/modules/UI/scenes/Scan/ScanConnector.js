@@ -1,19 +1,16 @@
 // @flow
 
-import type { EdgeCurrencyWallet, EdgeParsedUri } from 'edge-core-js'
-import { Actions } from 'react-native-router-flux'
+import type { EdgeCurrencyWallet } from 'edge-core-js'
 import { connect } from 'react-redux'
 
-import { loginWithEdge } from '../../../../actions/EdgeLoginActions.js'
-import * as Constants from '../../../../constants/indexConstants'
 import { getCameraPermission } from '../../../../reducers/permissions/selectors'
 import * as CORE_SELECTORS from '../../../Core/selectors.js'
 import type { Dispatch, State } from '../../../ReduxTypes'
 import { toggleScanToWalletListModal } from '../../components/WalletListModal/action'
 import * as UI_SELECTORS from '../../selectors.js'
-import { updateLabel, updateParsedURI } from '../SendConfirmation/action.js'
+import { updateLabel } from '../SendConfirmation/action.js'
 import { toggleWalletListModal } from '../WalletTransferList/action'
-import { disableScan, enableScan, toggleAddressModal, toggleEnableTorch, qrCodeScanned } from './action'
+import { toggleAddressModal, toggleEnableTorch, qrCodeScanned } from './action'
 import Scan from './Scan.ui'
 import type { GuiWallet } from '../../../../types'
 

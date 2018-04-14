@@ -2,7 +2,6 @@
 
 import { LegacyAddressModalConnector } from './LegacyAddressModalConnector.js'
 import { LegacyAddressModalComponent } from './LegacyAddressModal.ui.js'
-import { LegacyAddressModalReducer } from './LegacyAddressModalReducer.js'
 import {
   LEGACY_ADDRESS_SCANNED,
   DISMISS_MODAL,
@@ -16,7 +15,6 @@ import {
 export {
   LegacyAddressModalConnector,
   LegacyAddressModalComponent,
-  LegacyAddressModalReducer,
   legacyAddressScanned,
   confirmLegacyAddress,
   dismissModal,

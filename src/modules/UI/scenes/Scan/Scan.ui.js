@@ -87,7 +87,7 @@ export default class Scan extends Component<Props> {
           {this.renderDropUp()}
         </View>
 
-        <LegacyAddressModal />
+        <LegacyAddressModal onConfirm={() => console.log('CONFIRM_LEGACY_ADDRESS')} />
       </SafeAreaView>
     )
   }

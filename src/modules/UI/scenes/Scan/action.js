@@ -41,7 +41,7 @@ export const qrCodeScanned = (data: string) => (dispatch: Dispatch, getState: Ge
   const state = getState()
   if (!state.ui.scenes.scan.scanEnabled) return
 
-  dispatch(qrCodeScanned(data))
+  // dispatch(qrCodeScanned(data))
 
   // EDGE LOGIN ///////////////////////////////////////////////////////////
   if (UTILS.isEdgeLogin(data)) {

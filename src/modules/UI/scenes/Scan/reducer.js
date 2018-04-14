@@ -4,22 +4,26 @@ import { combineReducers } from 'redux'
 
 import {
   addressModalVisible,
+  legacyAddressModal,
   recipientAddress,
   scanEnabled,
   scanToWalletListModalVisibility,
   selectedWalletListModalVisibility,
-  torchEnabled
+  torchEnabled,
+  uri
 } from './reducers'
 
+import { reducer as legacyAddressModal } from './LegacyAddressModal/indexLegacyAddressModal.js'
+
 export const scan = combineReducers({
-  torch,
-  addressModal,
+  addressModalVisible,
+  legacyAddressModal,
   recipientAddress,
   scanEnabled,
-  selectedWalletListModalVisibility,
   scanToWalletListModalVisibility,
-  uri,
-  legacyAddressModal
+  selectedWalletListModalVisibility,
+  torchEnabled,
+  uri
 })
 
 export default scan
