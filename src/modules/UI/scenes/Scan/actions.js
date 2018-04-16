@@ -63,6 +63,11 @@ export const addressModalBackdropPressed = () => ({
   type: ADDRESS_MODAL_BACKDROP_PRESSED
 })
 
+export const ADDRESS_MODAL_BACK_BUTTON_PRESSED = PREFIX + 'ADDRESS_MODAL_BACK_BUTTON_PRESSED'
+export const addressModalBackButtonPressed = () => ({
+  type: ADDRESS_MODAL_BACK_BUTTON_PRESSED
+})
+
 export const ADDRESS_MODAL_CANCEL_BUTTON_PRESSED = PREFIX + 'ADDRESS_MODAL_CANCEL_BUTTON_PRESSED'
 export const legacyAddressCancelButtonPressed = () => ({
   type: ADDRESS_MODAL_CANCEL_BUTTON_PRESSED
@@ -101,6 +106,11 @@ export const legacyAddressModalBackdropPressed = () => ({
   type: LEGACY_ADDRESS_MODAL_BACKDROP_PRESSED
 })
 
+export const LEGACY_ADDRESS_MODAL_BACK_BUTTON_PRESSED = PREFIX + 'LEGACY_ADDRESS_MODAL_BACK_BUTTON_PRESSED'
+export const legacyAddressModalBackButtonPressed = () => ({
+  type: LEGACY_ADDRESS_MODAL_BACK_BUTTON_PRESSED
+})
+
 export const LEGACY_ADDRESS_MODAL_CANCEL_BUTTON_PRESSED = PREFIX + 'LEGACY_ADDRESS_MODAL_CANCEL_BUTTON_PRESSED'
 export const legacyAddressModalCancelPressed = () => ({
   type: LEGACY_ADDRESS_MODAL_CANCEL_BUTTON_PRESSED
@@ -117,7 +127,7 @@ export const tokenDetected = () => ({
   type: TOKEN_DETECTED
 })
 
-// OPERATIONS
+// OTHER
 export const PARSE_URI_SUCCEEDED = PREFIX + 'PARSE_URI_SUCCEEDED'
 export const parseUriSuceeded = (parsedUri: EdgeParsedUri) => ({
   type: PARSE_URI_SUCCEEDED,
@@ -128,6 +138,21 @@ export const PARSE_URI_FAILED = PREFIX + 'PARSE_URI_FAILED'
 export const parseUriFailed = (error: Error) => ({
   type: PARSE_URI_FAILED,
   data: { error }
+})
+
+export const INVALID_URI_MODAL_BACKDROP_PRESSED = PREFIX + 'INVALID_URI_MODAL_BACKDROP_PRESSED'
+export const invalidUriModalBackdropPressed = () => ({
+  type: INVALID_URI_MODAL_BACKDROP_PRESSED
+})
+
+export const INVALID_URI_MODAL_BACK_BUTTON_PRESSED = PREFIX + 'INVALID_URI_MODAL_BACK_BUTTON_PRESSED'
+export const invalidUriModalBackButtonPressed = () => ({
+  type: INVALID_URI_MODAL_BACK_BUTTON_PRESSED
+})
+
+export const INVALID_URI_MODAL_EXPIRED = PREFIX + 'INVALID_URI_MODAL_EXPIRED'
+export const invalidUriModalExpired = () => ({
+  type: INVALID_URI_MODAL_EXPIRED
 })
 
 
