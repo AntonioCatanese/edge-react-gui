@@ -1,10 +1,11 @@
-/* eslint-disable flowtype/require-valid-file-annotation */
+// @flow
 
-import Scan from './Scan.ui.js'
-import { ACTION } from 'actions.js'
+import Scene from './ui'
+import withSceneState from './connectors'
+import reducer from './reducer.js'
+import actions from './actions.js'
+import styles from './styles.js'
 
-export {
-  ACTION
-}
+export { actions, withSceneState, reducer, Scene, styles }
 
-export default Scan
+export default withSceneState(Scene)

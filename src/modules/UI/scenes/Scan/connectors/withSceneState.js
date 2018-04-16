@@ -11,7 +11,6 @@ import * as UI_SELECTORS from '../../selectors.js'
 import { updateLabel } from '../SendConfirmation/action.js'
 import { toggleWalletListModal } from '../WalletTransferList/action'
 import { toggleAddressModal, toggleEnableTorch, qrCodeScanned } from './action'
-import Scan from './Scan.ui'
 import type { GuiWallet } from '../../../../types'
 
 const mapStateToProps = (state: State) => {
@@ -40,4 +39,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   qrCodeScanned: (data: string) => dispatch(qrCodeScanned(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Scan)
+export default connect(mapStateToProps, mapDispatchToProps)

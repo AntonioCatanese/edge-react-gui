@@ -10,16 +10,16 @@ import {
   selectedWalletListModalVisibility,
   torchEnabled,
   uri
-} from './reducers'
+} from './State'
 
 export const scan = combineReducers({
-  addressModalVisible,
-  legacyAddressModal,
-  scanEnabled,
-  scanToWalletListModalVisibility,
-  selectedWalletListModalVisibility,
-  torchEnabled,
-  uri
+  addressModalVisible: addressModalVisible.reducer,
+  legacyAddressModal: legacyAddressModal.reducer,
+  scanEnabled: scanEnabled.reducer,
+  scanToWalletListModalVisibility: scanToWalletListModalVisibility.reducer,
+  selectedWalletListModalVisibility: selectedWalletListModalVisibility.reducer,
+  torchEnabled: torchEnabled.reducer,
+  uri: uri.reducer
 })
 
 export default scan

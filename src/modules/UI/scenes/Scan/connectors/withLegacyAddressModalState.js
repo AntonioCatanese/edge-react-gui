@@ -24,4 +24,4 @@ export const mapDispatchToProps = (dispatch: Dispatch, ownProps: { confirm: () =
   }
 })
 
-export const LegacyAddressModalConnector = connect(mapStateToProps, mapDispatchToProps)(LegacyAddressModalComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(LegacyAddressModalComponent)
