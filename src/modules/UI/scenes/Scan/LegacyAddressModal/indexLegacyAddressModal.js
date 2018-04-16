@@ -3,23 +3,21 @@
 import { LegacyAddressModalConnector } from './LegacyAddressModalConnector.js'
 import { LegacyAddressModalComponent } from './LegacyAddressModal.ui.js'
 import {
-  LEGACY_ADDRESS_SCANNED,
-  DISMISS_MODAL,
+  CONFIRM,
+  DISMISS,
   RESET,
-  legacyAddressScanned,
-  confirmLegacyAddress,
-  dismissModal,
+  confirm,
+  dismiss,
   reset
 } from './LegacyAddressModalActions.js'
 
 export {
   LegacyAddressModalConnector,
   LegacyAddressModalComponent,
-  legacyAddressScanned,
-  confirmLegacyAddress,
-  dismissModal,
+  confirm,
+  dismiss,
   reset,
-  DISMISS_MODAL,
-  LEGACY_ADDRESS_SCANNED,
+  DISMISS,
+  CONFIRM,
   RESET
 }

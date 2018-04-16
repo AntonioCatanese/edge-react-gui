@@ -4,13 +4,13 @@ import React, { Component } from 'react'
 import { Text } from 'react-native'
 import { sprintf } from 'sprintf-js'
 
-import { Icon } from '../../../../components/Icon/Icon.ui.js'
-import { InteractiveModal, PrimaryButton, SecondaryButton } from '../../../../components/Modals/index.js'
+import { Icon } from '../../../components/Icon/Icon.ui.js'
+import { InteractiveModal, PrimaryButton, SecondaryButton } from '../../../components/Modals/'
 
-import s from '../../../../../../locales/strings.js'
+import s from '../../../../../locales/strings.js'
 
 type Props = {
-  isVisible: boolean,
+  isActive: boolean,
   currencyName: string,
   onConfirm: () => void,
   onCancel: () => void,
@@ -18,21 +18,21 @@ type Props = {
 }
 export class LegacyAddressModalComponent extends Component<Props> {
   static defaultProps = {
-    isVisible: false,
+    isActive: false,
     currencyName: 'Currency Name',
     onConfirm: () => {},
     onCancel: () => {}
   }
 
   render () {
-    const { isVisible, currencyName } = this.props
+    const { isActive, currencyName } = this.props
     const WARNING = sprintf(s.strings.legacy_address_warning, currencyName)
     const TITLE = s.strings.legacy_address_title
     const CONFIRM = s.strings.legacy_address_confirm
     const CANCEL = s.strings.legacy_address_cancel
 
     return (
-      <InteractiveModal isVisible={isVisible} onBackdropPress={this.onCancel} onBackButtonPress={this.onCancel} onModalHide={this.onModalHide}>
+      <InteractiveModal isActive={isActive} onBackdropPress={this.onCancel} onBackButtonPress={this.onCancel} onModalHide={this.onModalHide}>
         <InteractiveModal.Icon>
           <Icon style={{}} type={'ionIcons'} name={'ios-alert-outline'} size={30} />
         </InteractiveModal.Icon>

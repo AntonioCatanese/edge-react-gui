@@ -165,7 +165,7 @@ export class Row extends Component<RowProps> {
 
 // INTERACTIVE_MODAL /////////////////////////////////////////////////////////////////////////////
 type Props = {
-  isVisible: boolean,
+  isActive: boolean,
   children: Node,
   style?: StyleSheet.Styles
 }
@@ -179,7 +179,7 @@ export class InteractiveModal extends Component<Props> {
   static Row = Row
 
   render () {
-    const { isVisible } = this.props
+    const { isActive } = this.props
     const children = React.Children.toArray(this.props.children)
     const icon = children.find(child => child.type === InteractiveModal.Icon)
     const title = children.find(child => child.type === InteractiveModal.Title)
@@ -188,7 +188,7 @@ export class InteractiveModal extends Component<Props> {
 
     return (
       <Modal useNativeDriver hideModalContentWhileAnimating
-        isVisible={isVisible}
+        isVisible={isActive}
         {...this.props}
         style={[styles.modal, this.props.style]}>
         {icon}

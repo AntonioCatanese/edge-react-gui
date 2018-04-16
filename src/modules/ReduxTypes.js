@@ -64,7 +64,6 @@ export type State = {
       scan: {
         torchEnabled: boolean,
         addressModalVisible: boolean,
-        recipientAddress: string,
         scanEnabled: boolean,
         selectedWalletListModalVisibility: boolean,
         scanToWalletListModalVisibility: boolean

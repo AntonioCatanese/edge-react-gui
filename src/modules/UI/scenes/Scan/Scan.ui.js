@@ -20,7 +20,7 @@ import Gradient from '../../components/Gradient/Gradient.ui'
 import SafeAreaView from '../../components/SafeAreaView'
 import { AUTHORIZED, DENIED, RESTRICTED } from '../../permissions'
 import AddressModal from './components/AddressModalConnector'
-import { LegacyAddressModalConnector as LegacyAddressModal } from './components/LegacyAddressModal/indexLegacyAddressModal.js'
+import { LegacyAddressModalConnector as LegacyAddressModal } from './LegacyAddressModal/indexLegacyAddressModal.js'
 import styles, { styles as styleRaw } from './style'
 
 type Props = {

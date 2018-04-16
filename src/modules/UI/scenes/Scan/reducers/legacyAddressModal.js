@@ -2,36 +2,34 @@
 
 import type { Action } from '../../../../ReduxTypes.js'
 
-import { LEGACY_ADDRESS_SCANNED, DISMISS_MODAL, RESET } from './indexLegacyAddressModal.js'
-
 const initialState = {
-  isVisible: false,
+  isActive: false,
   currencyName: null
 }
 
 type ActiveState = {
-  isVisible: true,
+  isActive: true,
   currencyName: string
 }
 type InactiveState = {
-  isVisible: false,
+  isActive: false,
   currencyName: null
 }
 type State = ActiveState | InactiveState
-export const legacyAddressModal = (state: State = initialState, action: Action) => {
+export const reducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
-    case LEGACY_ADDRESS_SCANNED: {
+    case ACTIVATED: {
       return {
         ...state,
-        isVisible: true,
+        isActive: true,
         // $FlowFixMe
         currencyName: action.data.currencyName
       }
     }
-    case DISMISS_MODAL: {
+    case DEACTIVATED: {
       return {
         ...state,
-        isVisible: false
+        isActive: false
       }
     }
     case RESET: {
@@ -39,5 +37,11 @@ export const legacyAddressModal = (state: State = initialState, action: Action) 
     }
     default:
       return state
+  }
+}
+
+export const mapActions = (reducer) => (state, action) => {
+  if (action.type === 'LEGACY_ADDRESS_DETECTED') {
+    return reducer(state, activated())
   }
 }

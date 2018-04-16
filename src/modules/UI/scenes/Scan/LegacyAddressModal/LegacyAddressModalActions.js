@@ -2,20 +2,20 @@
 
 export const PREFIX = 'LEGACY_ADDRESS_MODAL/'
 
-export const LEGACY_ADDRESS_SCANNED = PREFIX + 'LEGACY_ADDRESS_SCANNED'
-export const legacyAddressScanned = (currencyName: string) => ({
-  type: LEGACY_ADDRESS_SCANNED,
+export const DISPLAY = PREFIX + 'DISPLAY'
+export const display = (currencyName: string) => ({
+  type: DISPLAY,
   data: { currencyName }
 })
 
-export const DISMISS_MODAL = PREFIX + 'DISMISS_MODAL'
-export const dismissModal = () => ({
-  type: DISMISS_MODAL
+export const CONFIRM = PREFIX + 'CONFIRM'
+export const confirm = () => ({
+  type: CONFIRM
 })
 
-export const CONFIRM_LEGACY_ADDRESS = PREFIX + 'CONFIRM_LEGACY_ADDRESS'
-export const confirmLegacyAddress = () => ({
-  type: CONFIRM_LEGACY_ADDRESS
+export const DISMISS = PREFIX + 'DISMISS'
+export const dismiss = () => ({
+  type: DISMISS
 })
 
 export const RESET = PREFIX + 'RESET'
